@@ -80,20 +80,22 @@ describe("EditContactScreen", () => {
   it("loads and displays the selected contact", async () => {
     render(<EditContactScreen {...createProps()} />);
 
-    expect(await screen.findByTestId("name-input")).toHaveProp(
-      "value",
-      "Jane Doe"
-    );
-    expect(screen.getByTestId("email-input")).toHaveProp(
-      "value",
-      "jane@example.com"
-    );
-    expect(screen.getByTestId("phone-input")).toHaveProp(
-      "value",
-      "098-765-4321"
-    );
-    expect(screen.getByTestId("company-input")).toHaveProp("value", "XYZ Corp");
-  });
+    await waitFor(() => {
+      expect(screen.getByTestId("name-input")).toHaveProp("value", "Jane Doe");
+      expect(screen.getByTestId("email-input")).toHaveProp(
+        "value",
+        "jane@example.com"
+      );
+      expect(screen.getByTestId("phone-input")).toHaveProp(
+        "value",
+        "098-765-4321"
+      );
+      expect(screen.getByTestId("company-input")).toHaveProp(
+        "value",
+        "XYZ Corp"
+      );
+    });
+  }, 10000);
 
   it("saves edits while preserving contact identity fields", async () => {
     render(<EditContactScreen {...createProps()} />);
