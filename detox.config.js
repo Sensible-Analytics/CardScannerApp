@@ -4,7 +4,15 @@
  */
 
 module.exports = {
-  testRunner: "jest",
+  testRunner: {
+    args: {
+      $0: "jest",
+      config: "e2e/jest.config.js",
+    },
+    jest: {
+      setupTimeout: 120000,
+    },
+  },
   apps: {
     "ios.debug": {
       type: "ios.app",
@@ -18,30 +26,51 @@ module.exports = {
       binaryPath: "android/app/build/outputs/apk/debug/app-debug.apk",
       build:
         "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd ..",
+      reversePorts: [8081],
+    },
+    "android.release": {
+      type: "android.apk",
+      binaryPath: "android/app/build/outputs/apk/release/app-release.apk",
+      build:
+        "cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release && cd ..",
     },
   },
   devices: {
     simulator: {
       type: "ios.simulator",
       device: {
-        type: "iPhone 14",
+        type: "iPhone 16",
       },
     },
     emulator: {
       type: "android.emulator",
       device: {
-        avdName: "Pixel_4_API_33", // You may need to adjust this to match your AVD name
+        avdName: "Medium_Phone_API_36.1",
+      },
+    },
+    attached: {
+      type: "android.attached",
+      device: {
+        adbName: "emulator-5554",
       },
     },
   },
   configurations: {
     "ios.sim": {
-      device: "devices.simulator",
-      app: "apps.ios.debug",
+      device: "simulator",
+      app: "ios.debug",
     },
     "android.emu": {
-      device: "devices.emulator",
-      app: "apps.android.debug",
+      device: "emulator",
+      app: "android.debug",
+    },
+    "android.emu.release": {
+      device: "emulator",
+      app: "android.release",
+    },
+    "android.att.release": {
+      device: "attached",
+      app: "android.release",
     },
   },
 };

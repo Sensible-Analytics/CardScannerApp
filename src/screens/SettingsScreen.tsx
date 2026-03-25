@@ -13,8 +13,10 @@ import {
   DataUsagePreference,
   DEFAULT_APP_SETTINGS,
 } from "../types/settings";
+import { createContact } from "../types/contact";
 import { showErrorAlert } from "../utils/errorHandler";
 import storageUtils from "../utils/storage";
+import { shouldDisableCameraForE2ESync } from "../utils/launchArgs";
 
 const AVAILABLE_LANGUAGES = [
   "eng",
@@ -42,6 +44,37 @@ const LANGUAGE_NAMES: Record<string, string> = {
   chi_sim: "Chinese (Simplified)",
 };
 
+const QA_SAMPLE_CONTACTS = [
+  createContact(
+    {
+      name: "Jane Doe",
+      email: "jane.doe@example.com",
+      phone: "+1 415 555 0101",
+      company: "Acme Labs",
+      address: "100 Market Street, San Francisco, CA",
+      website: "https://acme.example.com",
+    },
+    {
+      id: "qa-contact-jane-doe",
+      scannedAt: "2026-03-24T10:00:00.000Z",
+    }
+  ),
+  createContact(
+    {
+      name: "Carlos Ruiz",
+      email: "carlos.ruiz@example.com",
+      phone: "+34 91 555 0202",
+      company: "Northwind Iberia",
+      address: "Gran Via 1, Madrid, Spain",
+      website: "https://northwind.example.com",
+    },
+    {
+      id: "qa-contact-carlos-ruiz",
+      scannedAt: "2026-03-24T11:00:00.000Z",
+    }
+  ),
+];
+
 const SettingsScreen = () => {
   const [ocrLanguages, setOcrLanguages] = useState<string[]>(
     DEFAULT_APP_SETTINGS.ocrLanguages
@@ -54,6 +87,7 @@ const SettingsScreen = () => {
     DEFAULT_APP_SETTINGS.dataUsage
   );
   const [isLoading, setIsLoading] = useState(true);
+  const isE2E = shouldDisableCameraForE2ESync();
 
   const loadSettings = useCallback(async () => {
     setIsLoading(true);
@@ -189,6 +223,15 @@ const SettingsScreen = () => {
       "Import Data",
       "Import is not implemented yet. Export support is available from the Contacts screen."
     );
+  }, []);
+
+  const handleSeedSampleContacts = useCallback(async () => {
+    try {
+      await storageUtils.saveContacts(QA_SAMPLE_CONTACTS);
+      Alert.alert("Success", "Loaded sample contacts for QA.");
+    } catch (error) {
+      showErrorAlert(error, "Load QA contacts");
+    }
   }, []);
 
   const handleResetApp = useCallback(() => {
@@ -375,6 +418,24 @@ const SettingsScreen = () => {
           </Text>
         </TouchableOpacity>
       </View>
+
+      {__DEV__ || isE2E ? (
+        <View style={Styles.section} testID="qa-tools-section">
+          <Text style={Styles.sectionTitle}>QA Tools</Text>
+          <TouchableOpacity
+            style={Styles.button}
+            onPress={handleSeedSampleContacts}
+            testID="qa-seed-sample-contacts-button"
+          >
+            <MaterialCommunityIcons
+              name="flask-outline"
+              size={20}
+              color="#fff"
+            />
+            <Text style={Styles.buttonText}>Load Sample Contacts</Text>
+          </TouchableOpacity>
+        </View>
+      ) : null}
     </View>
   );
 };

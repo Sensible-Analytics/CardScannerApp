@@ -15,7 +15,14 @@
     "detox:test": "detox test -c ios.sim",
     "detox:test:android": "detox test -c android.emu",
     "detox:build:ios": "detox build -c ios.sim",
-    "detox:build:android": "detox build -c android.emu"
+    "detox:build:android": "detox build -c android.emu",
+    "e2e:android": "bash scripts/run-e2e-tests.sh android",
+    "e2e:ios": "bash scripts/run-e2e-tests.sh ios",
+    "e2e:all": "bash scripts/run-e2e-tests.sh all",
+    "e2e:android:build-only": "bash scripts/run-e2e-tests.sh -b android",
+    "e2e:ios:build-only": "bash scripts/run-e2e-tests.sh -b ios",
+    "e2e:android:skip-build": "bash scripts/run-e2e-tests.sh -s android",
+    "e2e:ios:skip-build": "bash scripts/run-e2e-tests.sh -s ios"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.1.2",

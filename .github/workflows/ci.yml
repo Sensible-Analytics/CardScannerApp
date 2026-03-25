@@ -1,0 +1,87 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  build-and-test:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        platform: [ios, android]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Setup Ruby and CocoaPods (iOS only)
+        if: matrix.platform == 'ios'
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "2.7"
+
+      - name: Install CocoaPods (iOS only)
+        if: matrix.platform == 'ios'
+        run: |
+          cd ios
+          pod install
+
+      - name: Setup Java (Android only)
+        if: matrix.platform == 'android'
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "11"
+          cache: "gradle"
+
+      - name: Setup Android SDK (Android only)
+        if: matrix.platform == 'android'
+        uses: AndroidSetup@v1
+        with:
+          api-level: 34
+
+      - name: Run linting
+        run: npm run lint
+
+      - name: Run TypeScript check
+        run: npm run tsc
+
+      - name: Run unit tests
+        run: npm run test:ci
+
+      - name: Build app (iOS)
+        if: matrix.platform == 'ios'
+        run: npm run detox:build:ios
+
+      - name: Build app (Android)
+        if: matrix.platform == 'android'
+        run: npm run detox:build:android
+
+      - name: Run E2E tests (iOS)
+        if: matrix.platform == 'ios'
+        run: npm run detox:test -- --configuration ios.sim
+
+      - name: Run E2E tests (Android)
+        if: matrix.platform == 'android'
+        run: npm run detox:test -- --configuration android.emu
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results-${{ matrix.platform }}
+          path: |
+            ./reports/
+            ./e2e/screenshots/
+            ./coverage/

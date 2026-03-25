@@ -7,7 +7,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={styles.container} testID="app-root">
         <AppNavigator />
       </SafeAreaView>
     </NavigationContainer>

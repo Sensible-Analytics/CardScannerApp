@@ -35,6 +35,7 @@ const ContactsStackNavigator = () => {
 export const AppNavigator = () => {
   return (
     <Tab.Navigator
+      initialRouteName="Scan"
       screenOptions={{
         tabBarActiveTintColor: "#0066cc",
         tabBarInactiveTintColor: "#666666",
@@ -46,6 +47,7 @@ export const AppNavigator = () => {
         options={{
           tabBarLabel: "Scan",
           tabBarIcon: ScanIcon,
+          tabBarTestID: "scan-tab-button",
         }}
       />
       <Tab.Screen
@@ -54,6 +56,7 @@ export const AppNavigator = () => {
         options={{
           tabBarLabel: "Contacts",
           tabBarIcon: ContactsIcon,
+          tabBarTestID: "contacts-tab-button",
         }}
       />
       <Tab.Screen
@@ -62,6 +65,7 @@ export const AppNavigator = () => {
         options={{
           tabBarLabel: "Settings",
           tabBarIcon: SettingsIcon,
+          tabBarTestID: "settings-tab-button",
         }}
       />
     </Tab.Navigator>
