@@ -18,12 +18,15 @@ jest.mock("@react-navigation/native", () => ({
   },
 }));
 
-jest.mock("../src/navigation/AppNavigator", () => ({
-  AppNavigator: () => {
-    const { View } = await import("react-native");
-    return <View testID="app-navigator" />;
-  },
-}));
+jest.mock("../src/navigation/AppNavigator", () => {
+  const React = require("react");
+  const { View } = require("react-native");
+  return {
+    AppNavigator: () => {
+      return <View testID="app-navigator" />;
+    },
+  };
+});
 
 it("renders correctly", () => {
   renderer.create(<App />);

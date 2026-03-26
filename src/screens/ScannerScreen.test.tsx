@@ -77,6 +77,12 @@ jest.mock("../utils/errorHandler", () => ({
   showErrorAlert: jest.fn(),
 }));
 
+jest.mock("react-native", () => ({
+  Alert: {
+    alert: jest.fn(),
+  },
+}));
+
 const mockedMlkitOcr = MlkitOcr as jest.Mocked<typeof MlkitOcr>;
 const mockedStorageUtils = storageUtils as jest.Mocked<typeof storageUtils>;
 const mockedUseCameraDevice = useCameraDevice as jest.MockedFunction<
