@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert } from "react-native";
+import { Alert, View } from "react-native";
 import {
   fireEvent,
   render,
@@ -28,8 +28,6 @@ jest.mock("@react-navigation/native", () => {
 });
 
 jest.mock("react-native-vision-camera", () => {
-  const { View } = require("react-native");
-
   const MockCamera = React.forwardRef((_props: unknown, ref: unknown) => {
     React.useImperativeHandle(ref, () => ({
       takePhoto: mockTakePhoto,

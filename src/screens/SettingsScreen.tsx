@@ -159,7 +159,7 @@ const SettingsScreen = () => {
 
       try {
         await persistSettings({ ocrLanguages: nextLanguages });
-      } catch (error) {
+      } catch {
         setOcrLanguages(ocrLanguages);
       }
     },
@@ -172,7 +172,7 @@ const SettingsScreen = () => {
 
       try {
         await persistSettings({ autoSave: value });
-      } catch (error) {
+      } catch {
         setAutoSave(!value);
       }
     },
@@ -185,7 +185,7 @@ const SettingsScreen = () => {
 
       try {
         await persistSettings({ notificationEnabled: value });
-      } catch (error) {
+      } catch {
         setNotificationEnabled(!value);
       }
     },
@@ -199,7 +199,7 @@ const SettingsScreen = () => {
 
       try {
         await persistSettings({ dataUsage: value });
-      } catch (error) {
+      } catch {
         setDataUsage(previousValue);
       }
     },
