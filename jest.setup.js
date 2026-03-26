@@ -83,18 +83,3 @@ jest.mock("react-native/Libraries/AppState/AppState", () => ({
   removeEventListener: jest.fn(),
   currentState: "active",
 }));
-
-// Mock react-native/Libraries/Appearance/Appearance - commented out as it may not exist in all RN versions
-// jest.mock("react-native/Libraries/Appearance/Appearance", () => ({
-//   getColorScheme: jest.fn().mockReturnValue("light"),
-//   addListener: jest.fn(),
-//   removeListeners: jest.fn(),
-// }));
-
-// Mock react-native/Libraries/Platform/Platform - skipped as it causes resolution issues
-// The Platform module is handled by react-native preset in Jest
-// jest.mock("react-native/Libraries/Platform/Platform", () => ({
-//   OS: "ios", // Default to iOS, can be overridden in tests
-//   Version: "14.0",
-//   isTesting: false,
-// }));
