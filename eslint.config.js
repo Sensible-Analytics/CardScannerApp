@@ -60,9 +60,16 @@ export default [
       'no-useless-escape': 'off',
       'react-native/no-inline-styles': 'off',
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-require-imports': 'off',
       'no-console': 'off',
       'no-var': 'warn',
       'prefer-const': 'warn',
+    },
+  },
+  {
+    files: ['**/*.test.ts', '**/*.test.tsx', '**/*.spec.ts', '**/*.spec.tsx'],
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
     },
   },
   {
