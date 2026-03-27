@@ -40,7 +40,7 @@ jobs:
 
       - name: Build iOS Debug (Simulator)
         run: |
-          xcodebuild -workspace ios/CardScannerApp.xcworkspace -scheme CardScannerApp -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' clean build
+          xcodebuild -workspace ios/CardScannerApp.xcworkspace -scheme CardScannerApp -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' clean build CONFIGURATION_BUILD_DIR=ios/build/Debug-iphonesimulator
           mkdir -p build
           cp -r ios/build/Debug-iphonesimulator/CardScannerApp.app build/CardScanner-debug-ios.app
 
