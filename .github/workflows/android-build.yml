@@ -35,9 +35,27 @@ jobs:
 
       - name: Generate autolinking.json
         run: |
-          npx react-native config > /dev/null 2>&1 || true
           mkdir -p android/build/generated/autolinking
-          npx react-native config --json > android/build/generated/autolinking/autolinking.json 2>/dev/null || true
+          node -e "
+            const fs = require('fs');
+            const { execSync } = require('child_process');
+            try {
+              const output = execSync('npx react-native config', { encoding: 'utf8', maxBuffer: 10*1024*1024 });
+              const config = JSON.parse(output);
+              const autolinking = {
+                dependencies: Object.keys(config.dependencies).reduce((acc, key) => {
+                  acc[key] = { root: config.dependencies[key].root };
+                  return acc;
+                }, {}),
+                version: config.reactNativeVersion
+              };
+              fs.writeFileSync('android/build/generated/autolinking/autolinking.json', JSON.stringify(autolinking, null, 2));
+              console.log('autolinking.json generated successfully');
+            } catch (e) {
+              console.error('Error generating autolinking.json:', e.message);
+              process.exit(1);
+            }
+          "
 
       - name: Run linting
         run: npm run lint
