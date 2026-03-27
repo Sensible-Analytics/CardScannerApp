@@ -33,6 +33,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Generate autolinking.json
+        run: |
+          npx react-native config > /dev/null 2>&1 || true
+          mkdir -p android/build/generated/autolinking
+          npx react-native config --json > android/build/generated/autolinking/autolinking.json 2>/dev/null || true
+
       - name: Run linting
         run: npm run lint
 
