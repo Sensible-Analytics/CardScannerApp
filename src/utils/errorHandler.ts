@@ -5,7 +5,16 @@ interface ErrorWithCode {
   message?: string;
 }
 
-export const handleError = (error: ErrorWithCode, context: string = "") => {
+const isErrorWithCode = (error: unknown): error is ErrorWithCode => {
+  return typeof error === "object" && error !== null;
+};
+
+export const handleError = (error: unknown, context: string = "") => {
+  if (!isErrorWithCode(error)) {
+    console.error(`Error in ${context}:`, error);
+    return "An unexpected error occurred";
+  }
+
   console.error(`Error in ${context}:`, error);
 
   if (error.code) {
@@ -19,7 +28,7 @@ export const handleError = (error: ErrorWithCode, context: string = "") => {
   return "An unexpected error occurred";
 };
 
-export const showErrorAlert = (error: ErrorWithCode, context: string = "") => {
+export const showErrorAlert = (error: unknown, context: string = "") => {
   const message = handleError(error, context);
   Alert.alert("Error", message);
 };

@@ -25,12 +25,6 @@ jest.mock("../utils/errorHandler", () => ({
   showErrorAlert: jest.fn(),
 }));
 
-jest.mock("react-native", () => ({
-  Alert: {
-    alert: jest.fn(),
-  },
-}));
-
 type EditContactScreenProps = React.ComponentProps<typeof EditContactScreen>;
 
 const mockedStorageUtils = storageUtils as jest.Mocked<typeof storageUtils>;

@@ -47,7 +47,7 @@ export const AppNavigator = () => {
         options={{
           tabBarLabel: "Scan",
           tabBarIcon: ScanIcon,
-          tabBarTestID: "scan-tab-button",
+          tabBarButtonTestID: "scan-tab-button",
         }}
       />
       <Tab.Screen
@@ -56,7 +56,7 @@ export const AppNavigator = () => {
         options={{
           tabBarLabel: "Contacts",
           tabBarIcon: ContactsIcon,
-          tabBarTestID: "contacts-tab-button",
+          tabBarButtonTestID: "contacts-tab-button",
         }}
       />
       <Tab.Screen
@@ -65,7 +65,7 @@ export const AppNavigator = () => {
         options={{
           tabBarLabel: "Settings",
           tabBarIcon: SettingsIcon,
-          tabBarTestID: "settings-tab-button",
+          tabBarButtonTestID: "settings-tab-button",
         }}
       />
     </Tab.Navigator>

@@ -1,4 +1,4 @@
-import RNFS from "react-native-fs";
+import * as RNFS from "react-native-fs";
 import Share from "react-native-share";
 import { Contact, ContactDraft, normalizeContactDraft } from "../types/contact";
 

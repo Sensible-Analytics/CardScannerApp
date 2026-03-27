@@ -252,7 +252,8 @@ export const storageUtils = {
 
   resetAppData: async (): Promise<void> => {
     try {
-      await AsyncStorage.multiRemove(Object.values(STORAGE_KEYS));
+      // AsyncStorage.multiRemove is available but types may be incomplete
+      await (AsyncStorage as unknown as { multiRemove: (keys: string[]) => Promise<void> }).multiRemove(Object.values(STORAGE_KEYS));
     } catch (error) {
       console.error("Failed to reset app data:", error);
       throw error;

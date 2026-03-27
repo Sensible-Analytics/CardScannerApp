@@ -48,12 +48,6 @@ jest.mock("../utils/errorHandler", () => ({
   showErrorAlert: jest.fn(),
 }));
 
-jest.mock("react-native", () => ({
-  Alert: {
-    alert: jest.fn(),
-  },
-}));
-
 const mockedStorageUtils = storageUtils as jest.Mocked<typeof storageUtils>;
 const mockedExportContactsAsCSV = exportContactsAsCSV as jest.MockedFunction<
   typeof exportContactsAsCSV
