@@ -83,7 +83,6 @@ Pods/
 .sisyphus/
 .superset/
 .vscode/
-AGENTS.md
 Gemfile
 Gemfile.lock
 docs/
