@@ -67,7 +67,7 @@
     "rn-mlkit-ocr": "^0.3.1"
   },
   "devDependencies": {
-    "@eslint/js": "^8.57.0",
+    "@eslint/js": "^10.0.1",
     "@react-native-community/cli": "13.6.9",
     "@react-native/babel-preset": "0.84.1",
     "@react-native/metro-config": "0.84.1",
