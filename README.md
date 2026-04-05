@@ -16,7 +16,7 @@ CardSnap is a professional business card scanner built with **native Kotlin** an
 
 | Scan Screen | Review Contact | Contacts List | Settings |
 |:---:|:---:|:---:|:---:|
-| ![Scan Screen](docs/images/screenshots/scan-screen.png) | ![Review](docs/images/screenshots/review-contact.png) | ![Contacts](docs/images/screenshots/contacts-list.png) | ![Settings](docs/images/screenshots/settings.png) |
+| ![Scan Screen](docs/images/screenshots/scan-screen.svg) | ![Review](docs/images/screenshots/review-contact.svg) | ![Contacts](docs/images/screenshots/contacts-list.svg) | ![Settings](docs/images/screenshots/settings.svg) |
 
 ---
 

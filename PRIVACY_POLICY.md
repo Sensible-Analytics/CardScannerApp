@@ -113,7 +113,7 @@ California residents have the right to:
 
 For privacy-related questions or concerns:
 
-**Email**: privacy@cardscannerapp.com
+**Email**: privacy@cardsnap.com
 
 **Response Time**: We aim to respond within 48 hours
 

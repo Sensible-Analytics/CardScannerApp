@@ -5,12 +5,12 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/Sensible-Analytics/CardScannerApp.git"
+    "url": "https://github.com/Sensible-Analytics/CardSnap.git"
   },
   "bugs": {
-    "url": "https://github.com/Sensible-Analytics/CardScannerApp/issues"
+    "url": "https://github.com/Sensible-Analytics/CardSnap/issues"
   },
-  "homepage": "https://github.com/Sensible-Analytics/CardScannerApp#readme",
+  "homepage": "https://github.com/Sensible-Analytics/CardSnap#readme",
   "keywords": [
     "kotlin",
     "android",

@@ -1,8 +1,8 @@
-# CardScanner - App Store Listing Documentation
+# CardSnap - App Store Listing Documentation
 
 ## 📱 App Overview
 
-**App Name**: CardScanner  
+**App Name**: CardSnap  
 **Subtitle/Short Description**: Business Card Scanner & Contact Manager  
 **Category**: Business / Productivity  
 **Content Rating**: Everyone (Android) / 4+ (iOS)  
@@ -14,7 +14,7 @@
 
 ### Full Description (5000 characters max)
 
-**CardScanner** is a professional business card scanner that uses advanced OCR technology to instantly capture and digitize business contacts. With just a photo, extract contact information automatically and manage your professional network efficiently.
+**CardSnap** is a professional business card scanner that uses advanced OCR technology to instantly capture and digitize business contacts. With just a photo, extract contact information automatically and manage your professional network efficiently.
 
 **Key Features:**
 
@@ -67,14 +67,14 @@
 4. Save to your contacts or export as VCard
 5. Access your digitized contacts anytime
 
-**Why Choose CardScanner?**
+**Why Choose CardSnap?**
 - ✅ No subscriptions or in-app purchases
 - ✅ No ads or tracking
 - ✅ Works completely offline
 - ✅ Regular updates with improvements
 - ✅ Professional-grade OCR accuracy
 
-Download CardScanner today and transform your business card collection into a powerful digital contact network!
+Download CardSnap today and transform your business card collection into a powerful digital contact network!
 
 ### Short Description (80 characters max)
 
@@ -86,7 +86,7 @@ Scan business cards instantly with OCR. Extract contacts & manage your network.
 
 ### iOS App Store Metadata
 
-**App Name**: CardScanner  
+**App Name**: CardSnap  
 **Subtitle**: Business Card Scanner & Contact Manager  
 **Category**: Primary: Business, Secondary: Productivity  
 **Content Rating**: 4+ (No objectionable material)  
@@ -103,7 +103,7 @@ Scan business cards instantly with OCR. Extract contacts & manage your network.
 ```
 Version 1.0.0 - Initial Release
 
-We're excited to launch CardScanner, your new business card scanning companion!
+We're excited to launch CardSnap, your new business card scanning companion!
 
 Features included in this release:
 • High-quality camera interface for card capture
@@ -128,7 +128,7 @@ Coming soon:
 
 ### Google Play Store Metadata
 
-**App Title**: CardScanner  
+**App Title**: CardSnap  
 **Short Description**: Scan business cards & manage contacts with OCR  
 **Category**: Business  
 **Content Rating**: Everyone  

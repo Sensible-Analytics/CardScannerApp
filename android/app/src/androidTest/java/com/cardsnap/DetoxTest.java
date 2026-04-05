@@ -1,4 +1,4 @@
-package com.cardscannerapp;
+package com.cardsnap;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;

@@ -62,7 +62,7 @@ CardSnap/
 ├── android/
 │   ├── app/
 │   │   ├── src/
-│   │   │   ├── main/java/com/cardscannerapp/
+│   │   │   ├── main/java/com/cardsnap/
 │   │   │   │   ├── data/          # Room DB, DAO, Repositories
 │   │   │   │   ├── domain/        # Models, OCR, Parser
 │   │   │   │   ├── ui/            # Screens, Navigation, Theme
