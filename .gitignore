@@ -85,11 +85,6 @@ Pods/
 .vscode/
 Gemfile
 Gemfile.lock
-!docs/index.html
-!docs/images/screenshots/
-!docs/index.html
-!docs/images/screenshots/
-docs/
 fastlane/
 scripts/
 setup-and-verify.sh
@@ -100,3 +95,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 yarn.lock
+docs/
+!docs/index.html
+!docs/images/screenshots/
+docs/
+!docs/index.html
+!docs/images/screenshots/
