@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!--
+    CardSnap App Icon
+    Canvas: 100 × 100 (deliver at 1024×1024 for store submission — scale uniformly)
+    Background: #0066FF (Primary Blue)
+    Corner radius: 22 (at 100×100 scale) — iOS/Android round automatically for home screen
+    Do not add corner radius when submitting to App Store — Apple clips it
+  -->
+
+  <!-- Background -->
+  <rect width="100" height="100" rx="22" fill="#0066FF"/>
+
+  <!-- Business card — tilted -4° to feel dynamic, not static -->
+  <g transform="rotate(-4, 50, 50)">
+    <!-- Card body -->
+    <rect x="16" y="27" width="68" height="44" rx="5" fill="white"/>
+    <!-- Name line -->
+    <rect x="25" y="37" width="30" height="3" rx="1.5" fill="#BFD5FF"/>
+    <!-- Title line -->
+    <rect x="25" y="45" width="22" height="2" rx="1"   fill="#C8DEFF"/>
+    <!-- Detail line 1 -->
+    <rect x="25" y="52" width="26" height="2" rx="1"   fill="#D4E8FF"/>
+    <!-- Detail line 2 -->
+    <rect x="25" y="59" width="18" height="2" rx="1"   fill="#D4E8FF"/>
+    <!-- Logo / avatar circle on card -->
+    <circle cx="67" cy="44" r="8" fill="#D4E8FF"/>
+  </g>
+
+  <!--
+    Viewfinder corner brackets
+    Communicate "camera is framing this card"
+    Stroke: white 90% opacity, 2.5px, round caps/joins
+  -->
+  <!-- Top-left -->
+  <polyline points="7,19 7,7 19,7"   fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Top-right -->
+  <polyline points="81,7 93,7 93,19"  fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Bottom-left -->
+  <polyline points="7,81 7,93 19,93"  fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Bottom-right -->
+  <polyline points="81,93 93,93 93,81" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!--
+    Shutter indicator — top-right
+    Small filled circle + faint outer ring
+    Represents camera ready / capture moment
+  -->
+  <circle cx="87" cy="14" r="3"   fill="white"                        opacity="0.9"/>
+  <circle cx="87" cy="14" r="5.5" fill="none" stroke="white" stroke-width="0.8" opacity="0.4"/>
+
+</svg>
