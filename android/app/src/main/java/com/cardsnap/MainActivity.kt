@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import com.cardsnap.ui.navigation.AppNavigation
 import com.cardsnap.ui.theme.CardSnapTheme
 
 class MainActivity : ComponentActivity() {
