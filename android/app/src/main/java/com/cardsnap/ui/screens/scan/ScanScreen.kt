@@ -132,20 +132,28 @@ private fun CameraView(uiState: ScanUiState, viewModel: ScanViewModel, context: 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ScanResultsView(uiState: ScanUiState, viewModel: ScanViewModel, context: Context, onReset: () -> Unit, onNavigateToContacts: () -> Unit) {
-    var name by remember(uiState.contact.name) { mutableStateOf(uiState.contact.name) }
-    var email by remember(uiState.contact.email) { mutableStateOf(uiState.contact.email) }
-    var phone by remember(uiState.contact.phone) { mutableStateOf(uiState.contact.phone) }
-    var company by remember(uiState.contact.company) { mutableStateOf(uiState.contact.company) }
-    var title by remember(uiState.contact.title) { mutableStateOf(uiState.contact.title) }
-    var website by remember(uiState.contact.website) { mutableStateOf(uiState.contact.website) }
+    var name by remember { mutableStateOf(uiState.contact.name ?: "") }
+    var email by remember { mutableStateOf(uiState.contact.email ?: "") }
+    var phone by remember { mutableStateOf(uiState.contact.phone ?: "") }
+    var company by remember { mutableStateOf(uiState.contact.company ?: "") }
+    var title by remember { mutableStateOf(uiState.contact.title ?: "") }
+    var website by remember { mutableStateOf(uiState.contact.website ?: "") }
     val updatedContact = uiState.contact.copy(name = name, email = email, phone = phone, company = company, title = title, website = website)
     Scaffold(topBar = { TopAppBar(title = { Text("Review Contact") }, navigationIcon = { IconButton(onClick = onReset) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back") } }) }) { padding ->
         Column(modifier = Modifier.fillMaxSize().padding(padding).verticalScroll(rememberScrollState()).padding(16.dp)) {
             uiState.capturedImage?.let { uri -> AsyncImage(model = uri, contentDescription = "Captured card", modifier = Modifier.fillMaxWidth().height(200.dp)); Spacer(modifier = Modifier.height(16.dp)) }
-            listOf("field-name" to name to { name = it }, "field-email" to email to { email = it }, "field-phone" to phone to { phone = it }, "field-company" to company to { company = it }, "field-title" to title to { title = it }, "field-website" to website to { website = it }).forEach { (tag, value, setter) ->
-                OutlinedTextField(value = value, onValueChange = setter, label = { Text(tag.removePrefix("field-").replaceFirstChar { it.uppercase() }) }, modifier = Modifier.fillMaxWidth().testTag(tag), keyboardOptions = KeyboardOptions(keyboardType = when(tag) { "field-email" -> KeyboardType.Email; "field-phone" -> KeyboardType.Phone; "field-website" -> KeyboardType.Uri; else -> KeyboardType.Text }))
-                Spacer(modifier = Modifier.height(8.dp))
-            }
+OutlinedTextField(value = name, onValueChange = { value -> name = value }, label = { Text("Name") }, modifier = Modifier.fillMaxWidth().testTag("field-name"), keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text))
+Spacer(modifier = Modifier.height(8.dp))
+OutlinedTextField(value = email, onValueChange = { value -> email = value }, label = { Text("Email") }, modifier = Modifier.fillMaxWidth().testTag("field-email"), keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email))
+Spacer(modifier = Modifier.height(8.dp))
+OutlinedTextField(value = phone, onValueChange = { value -> phone = value }, label = { Text("Phone") }, modifier = Modifier.fillMaxWidth().testTag("field-phone"), keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone))
+Spacer(modifier = Modifier.height(8.dp))
+OutlinedTextField(value = company, onValueChange = { value -> company = value }, label = { Text("Company") }, modifier = Modifier.fillMaxWidth().testTag("field-company"), keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text))
+Spacer(modifier = Modifier.height(8.dp))
+OutlinedTextField(value = title, onValueChange = { value -> title = value }, label = { Text("Title") }, modifier = Modifier.fillMaxWidth().testTag("field-title"), keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text))
+Spacer(modifier = Modifier.height(8.dp))
+OutlinedTextField(value = website, onValueChange = { value -> website = value }, label = { Text("Website") }, modifier = Modifier.fillMaxWidth().testTag("field-website"), keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri))
+Spacer(modifier = Modifier.height(8.dp))
             if (uiState.extractedText.isNotBlank()) { Spacer(modifier = Modifier.height(16.dp)); Text("Raw OCR Text", style = MaterialTheme.typography.labelMedium, color = TextSecondary); Text(uiState.extractedText, style = MaterialTheme.typography.bodySmall, color = TextSecondary, modifier = Modifier.background(SurfacePrimary).padding(8.dp)) }
             Spacer(modifier = Modifier.height(24.dp))
             if (uiState.isContactSaved) {
