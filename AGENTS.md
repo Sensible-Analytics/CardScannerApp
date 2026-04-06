@@ -135,5 +135,13 @@ Every PR MUST include:
 
 ---
 
-*Last updated: 2026-04-05*
+## 📄 Governance Documents
+
+- [Privacy Policy](docs/PRIVACY_POLICY.md)
+- [Security Policy](docs/SECURITY.md)
+- [Code of Conduct](docs/CODE_OF_CONDUCT.md)
+
+---
+
+*Last updated: 2026-04-06*
 *Migration: React Native → Native Kotlin Android*
