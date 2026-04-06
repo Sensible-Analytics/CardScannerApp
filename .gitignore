@@ -86,6 +86,8 @@ Pods/
 Gemfile
 Gemfile.lock
 docs/
+!docs/index.html
+!docs/images/
 fastlane/
 scripts/
 setup-and-verify.sh
